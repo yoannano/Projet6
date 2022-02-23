@@ -34,7 +34,7 @@ exports.login = (req, res, next) => {
           res.status(200).json({
             userId: user._id,
             //installer npm install --save jsonwebtoken
-            token: jwt.sign({ userId: user._id }, "RANDOM_TOKEN_SECRET", {
+            token: jwt.sign({ userId: user._id }, process.env.JWT_SIGN_SECRET, {
               expiresIn: "24h",
             }),
           });
